@@ -1,26 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700&family=Audiowide&display=swap');
 
 :root {
-  --bg-color: #020202;
-  --panel-bg: rgba(10, 15, 20, 0.85);
+  --bg-color: #000000;
+  --panel-bg: rgba(20, 5, 5, 0.9);
 
-  /* Palette */
-  --neon-cyan: #00f0ff;
-  --neon-amber: #ffaa00;
-  --neon-red: #ff2a2a;
-  --neon-purple: #bc13fe;
-  --grid-line: rgba(0, 240, 255, 0.1);
+  /* New Palette: Black, White, Red */
+  /* Mapping old variable names to new colors to preserve functionality */
+  --neon-cyan: #ff0000;
+  /* Primary Red Accent */
+  --neon-amber: #ffffff;
+  /* Secondary White Accent */
+  --neon-red: #cc0000;
+  /* Darker Red */
+  --neon-purple: #808080;
+  /* Grey for subtle elements */
+
+  --grid-line: rgba(255, 0, 0, 0.15);
 
   /* Text */
-  --text-primary: #e0f0ff;
-  --text-dim: rgba(224, 240, 255, 0.6);
+  --text-primary: #ffffff;
+  --text-dim: #a0a0a0;
 
   /* Glows */
-  --glow-cyan: 0 0 10px rgba(0, 240, 255, 0.4), 0 0 20px rgba(0, 240, 255, 0.2);
-  --glow-amber: 0 0 10px rgba(255, 170, 0, 0.4), 0 0 20px rgba(255, 170, 0, 0.2);
+  --glow-cyan: 0 0 10px rgba(255, 0, 0, 0.6), 0 0 20px rgba(255, 0, 0, 0.3);
+  /* Red Glow */
+  --glow-amber: 0 0 10px rgba(255, 255, 255, 0.4), 0 0 20px rgba(255, 255, 255, 0.2);
+  /* White Glow */
 
   --font-mono: 'Share Tech Mono', monospace;
   --font-header: 'Orbitron', sans-serif;
+  --font-logo: 'Audiowide', cursive;
 }
 
 body {
@@ -203,4 +212,54 @@ body::after {
   justify-content: center;
   align-items: center;
   width: 100%;
+}
+
+/* Spin Animations for SciFi Visuals */
+@keyframes spin-center {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.spin-slow {
+  animation: spin-center 60s linear infinite;
+}
+
+@keyframes spin-simple {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spin-reverse-fast {
+  animation: spin-simple 20s linear infinite reverse;
+}
+
+@keyframes breathing-glow {
+  0% {
+    box-shadow: 0 0 5px var(--neon-cyan);
+    transform: scale(1);
+  }
+
+  50% {
+    box-shadow: 0 0 20px var(--neon-cyan), 0 0 40px var(--neon-cyan);
+    transform: scale(1.1);
+  }
+
+  100% {
+    box-shadow: 0 0 5px var(--neon-cyan);
+    transform: scale(1);
+  }
+}
+
+.breathing {
+  animation: breathing-glow 2s infinite ease-in-out;
 }
